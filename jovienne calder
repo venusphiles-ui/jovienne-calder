@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEFTINPERDITION — Jovienne Maren Calder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Figtree:wght@300;400;500&family=JetBrains+Mono:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0d0b;
+  --bg-raised: #171411;
+  --bg-inset: #0a0908;
+  --text: #c8bfb0;
+  --text-dim: #8a8179;
+  --text-faint: #5a5349;
+  --gold: #a67c52;
+  --gold-dim: #7a5c3d;
+  --gold-glow: rgba(166, 124, 82, 0.08);
+  --blood: #7a2e2e;
+  --blood-dim: #4a1c1c;
+  --rule: #2a2520;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Figtree', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: var(–font-body);
+font-weight: 300;
+font-size: 15px;
+line-height: 1.75;
+letter-spacing: 0.01em;
+overflow-x: hidden;
+-webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(–gold-dim); color: var(–text); }
+
+body::after {
+content: ‘’;
+position: fixed;
+inset: 0;
+background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(166,124,82,0.008) 3px, rgba(166,124,82,0.008) 4px);
+pointer-events: none;
+z-index: 9999;
+}
+
+.spine { max-width: 640px; margin: 0 auto; padding: 0 2rem; }
+
+hr { border: none; height: 1px; background: var(–rule); margin: 0; }
+hr.gold { background: linear-gradient(to right, var(–gold-dim), transparent 70%); }
+
+/* ══════ HEADER ══════ */
+.file-header { padding: 8rem 0 4rem; }
+
+.file-stamp {
+font-family: var(–font-mono);
+font-size: 0.55rem;
+letter-spacing: 0.5em;
+text-transform: uppercase;
+color: var(–text-faint);
+margin-bottom: 2rem;
+opacity: 0;
+animation: typeIn 0.6s ease forwards 0.3s;
+}
+
+@keyframes typeIn {
+from { opacity: 0; transform: translateX(-8px); }
+to { opacity: 1; transform: translateX(0); }
+}
+
+.file-name {
+font-family: var(–font-display);
+font-weight: 400;
+font-size: clamp(2.2rem, 6vw, 3.8rem);
+line-height: 1.1;
+letter-spacing: -0.01em;
+color: var(–text);
+margin-bottom: 1rem;
+opacity: 0;
+animation: typeIn 0.8s ease forwards 0.5s;
+}
+
+.file-name em { font-style: italic; font-weight: 300; color: var(–gold); }
+
+.file-epigraph {
+font-family: var(–font-display);
+font-size: 1rem;
+font-style: italic;
+font-weight: 300;
+color: var(–text-dim);
+line-height: 1.8;
+max-width: 420px;
+opacity: 0;
+animation: typeIn 0.8s ease forwards 0.7s;
+}
+
+.file-meta {
+margin-top: 2.5rem;
+font-family: var(–font-mono);
+font-size: 0.6rem;
+letter-spacing: 0.12em;
+color: var(–text-dim);
+line-height: 2.4;
+opacity: 0;
+animation: typeIn 0.6s ease forwards 0.9s;
+}
+
+.file-meta strong { color: var(–text); font-weight: 400; }
+.file-meta .sep { color: var(–gold-dim); margin: 0 0.3em; }
+
+/* ══════ NAV ══════ */
+.section-nav {
+position: sticky;
+top: 0;
+z-index: 100;
+background: var(–bg);
+border-bottom: 1px solid var(–rule);
+padding: 1rem 0;
+margin-bottom: 4rem;
+display: flex;
+gap: 2rem;
+overflow-x: auto;
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+.section-nav::-webkit-scrollbar { display: none; }
+
+.section-nav a {
+font-family: var(–font-mono);
+font-size: 0.55rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–text-faint);
+text-decoration: none;
+white-space: nowrap;
+transition: color 0.3s;
+flex-shrink: 0;
+}
+.section-nav a:hover { color: var(–gold); }
+
+/* ══════ SECTIONS ══════ */
+.section { margin-bottom: 5rem; }
+
+.section-index {
+font-family: var(–font-mono);
+font-size: 0.5rem;
+letter-spacing: 0.5em;
+text-transform: uppercase;
+color: var(–text-faint);
+margin-bottom: 0.4rem;
+}
+
+.section-heading {
+font-family: var(–font-display);
+font-size: clamp(1.4rem, 3vw, 1.8rem);
+font-weight: 400;
+color: var(–text);
+margin-bottom: 2rem;
+line-height: 1.3;
+}
+.section-heading em { font-style: italic; font-weight: 300; color: var(–gold); }
+
+/* ══════ DOSSIER ══════ */
+.dossier-text { color: var(–text-dim); margin-bottom: 1.5rem; font-size: 0.92rem; }
+.dossier-text strong { color: var(–text); font-weight: 500; }
+.dossier-text em { color: var(–gold-dim); }
+
+.dossier-fields {
+margin: 2.5rem 0;
+border-top: 1px solid var(–rule);
+border-bottom: 1px solid var(–rule);
+padding: 1.5rem 0;
+}
+
+.dossier-row { display: flex; gap: 1rem; padding: 0.4rem 0; align-items: baseline; font-size: 0.85rem; }
+
+.dossier-key {
+font-family: var(–font-mono);
+font-size: 0.5rem;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: var(–text-faint);
+min-width: 130px;
+flex-shrink: 0;
+padding-top: 2px;
+}
+
+.dossier-val { color: var(–text-dim); }
+.dossier-val em { color: var(–gold-dim); }
+.dossier-val strong { color: var(–text); font-weight: 400; }
+
+.compliance-note {
+margin-top: 2rem;
+padding: 1.5rem;
+border-left: 2px solid var(–gold-dim);
+background: var(–gold-glow);
+font-size: 0.85rem;
+color: var(–text-dim);
+line-height: 1.8;
+}
+.compliance-note strong { color: var(–text); font-weight: 500; }
+
+/* ══════ PULL QUOTE ══════ */
+.pull {
+margin: 3rem 0 3rem 2rem;
+padding-left: 1.5rem;
+border-left: 1px solid var(–gold-dim);
+font-family: var(–font-display);
+font-size: 1.05rem;
+font-style: italic;
+font-weight: 300;
+color: var(–text-dim);
+line-height: 1.9;
+}
+
+.pull cite {
+display: block;
+margin-top: 0.6rem;
+font-family: var(–font-mono);
+font-size: 0.48rem;
+font-style: normal;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–text-faint);
+}
+
+/* ══════ UNIVERSES SECTION ══════ */
+.universe-group { margin-bottom: 3.5rem; }
+
+.universe-group-label {
+font-family: var(–font-mono);
+font-size: 0.52rem;
+letter-spacing: 0.4em;
+text-transform: uppercase;
+color: var(–gold-dim);
+margin-bottom: 1.5rem;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid var(–rule);
+}
+
+/* ══════ TIMELINE ══════ */
+.timeline { position: relative; padding-left: 2rem; }
+
+.timeline::before {
+content: ‘’;
+position: absolute;
+left: 4px;
+top: 8px;
+bottom: 8px;
+width: 1px;
+background: linear-gradient(to bottom, var(–gold-dim), var(–rule) 30%, var(–rule) 70%, var(–gold-dim));
+}
+
+.tl-node { position: relative; padding-bottom: 2.5rem; }
+.tl-node:last-child { padding-bottom: 0; }
+
+.tl-node::before {
+content: ‘’;
+position: absolute;
+left: -2rem;
+top: 8px;
+width: 9px;
+height: 9px;
+border: 1px solid var(–gold-dim);
+background: var(–bg);
+transform: translateX(-0.5px) rotate(45deg);
+transition: background 0.3s, border-color 0.3s;
+}
+.tl-node:hover::before { background: var(–gold-dim); border-color: var(–gold); }
+
+.tl-node.absent::before { border-style: dashed; opacity: 0.5; }
+.tl-node.absent .tl-body { opacity: 0.55; }
+.tl-node.absent:hover .tl-body { opacity: 0.85; }
+
+.tl-tag {
+font-family: var(–font-mono);
+font-size: 0.48rem;
+letter-spacing: 0.2em;
+color: var(–text-faint);
+margin-bottom: 0.2rem;
+}
+
+.tl-title {
+font-family: var(–font-display);
+font-size: 1.15rem;
+font-weight: 500;
+color: var(–text);
+margin-bottom: 0.6rem;
+}
+
+.tl-body {
+font-size: 0.85rem;
+color: var(–text-dim);
+line-height: 1.85;
+transition: opacity 0.3s;
+}
+.tl-body em { color: var(–gold-dim); }
+.tl-body strong { color: var(–text); font-weight: 400; }
+
+/* ══════ VERSE CARDS (alt/crossover) ══════ */
+.verse-block {
+padding: 1.5rem 0;
+border-bottom: 1px solid var(–rule);
+}
+.verse-block:last-child { border-bottom: none; }
+
+.verse-block-tag {
+font-family: var(–font-mono);
+font-size: 0.48rem;
+letter-spacing: 0.2em;
+color: var(–text-faint);
+margin-bottom: 0.2rem;
+}
+
+.verse-block-title {
+font-family: var(–font-display);
+font-size: 1.1rem;
+font-weight: 500;
+color: var(–text);
+margin-bottom: 0.5rem;
+}
+
+.verse-block-body {
+font-size: 0.85rem;
+color: var(–text-dim);
+line-height: 1.85;
+}
+.verse-block-body em { color: var(–gold-dim); }
+.verse-block-body strong { color: var(–text); font-weight: 400; }
+
+/* ══════ ASSOCIATES ══════ */
+.associate {
+padding: 1.5rem 0;
+border-bottom: 1px solid var(–rule);
+display: grid;
+grid-template-columns: 36px 1fr;
+gap: 1.2rem;
+align-items: start;
+}
+.associate:last-child { border-bottom: none; }
+
+.assoc-glyph {
+font-family: var(–font-display);
+font-size: 1.1rem;
+font-style: italic;
+color: var(–gold-dim);
+text-align: center;
+padding-top: 0.1rem;
+}
+
+.assoc-name { font-family: var(–font-display); font-size: 1rem; font-weight: 500; color: var(–text); margin-bottom: 0.1rem; }
+.assoc-tag { font-family: var(–font-mono); font-size: 0.45rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(–gold-dim); margin-bottom: 0.5rem; }
+.assoc-desc { font-size: 0.85rem; color: var(–text-dim); line-height: 1.8; }
+.assoc-desc em { color: var(–gold-dim); }
+
+/* ══════ TERMS ══════ */
+.term {
+padding: 1.5rem 0;
+border-bottom: 1px solid var(–rule);
+display: grid;
+grid-template-columns: 36px 1fr;
+gap: 1rem;
+align-items: start;
+}
+.term:last-child { border-bottom: none; }
+
+.term-num { font-family: var(–font-mono); font-size: 0.65rem; color: var(–text-faint); padding-top: 3px; }
+.term-label { font-family: var(–font-mono); font-size: 0.52rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(–gold-dim); margin-bottom: 0.5rem; }
+.term-text { font-size: 0.88rem; color: var(–text-dim); line-height: 1.85; }
+.term-text strong { color: var(–text); font-weight: 500; }
+
+/* ══════ INDEX ══════ */
+.index-group { margin-bottom: 2rem; }
+
+.index-label {
+font-family: var(–font-mono);
+font-size: 0.48rem;
+letter-spacing: 0.35em;
+text-transform: uppercase;
+color: var(–gold-dim);
+margin-bottom: 0.8rem;
+padding-bottom: 0.4rem;
+border-bottom: 1px solid var(–rule);
+}
+
+.index-list { columns: 1; column-gap: 2rem; }
+
+.index-item {
+font-family: var(–font-mono);
+font-size: 0.55rem;
+letter-spacing: 0.08em;
+color: var(–text-dim);
+padding: 0.3rem 0;
+break-inside: avoid;
+transition: color 0.2s;
+line-height: 1.6;
+}
+.index-item:hover { color: var(–text); }
+.index-item.accent { color: var(–gold); }
+
+@media (min-width: 500px) { .index-list { columns: 2; } }
+
+/* ══════ CLOSING ══════ */
+.closing { padding: 5rem 0 8rem; text-align: left; }
+
+.closing-line {
+font-family: var(–font-display);
+font-size: 0.95rem;
+font-style: italic;
+font-weight: 300;
+color: var(–text-faint);
+margin-bottom: 0.4rem;
+}
+.closing-line em { color: var(–gold-dim); }
+
+.closing-meta {
+margin-top: 2rem;
+font-family: var(–font-mono);
+font-size: 0.48rem;
+letter-spacing: 0.35em;
+text-transform: uppercase;
+color: var(–text-faint);
+line-height: 2.2;
+}
+
+.closing-meta a {
+color: var(–text-dim);
+text-decoration: none;
+border-bottom: 1px solid var(–rule);
+transition: color 0.3s, border-color 0.3s;
+}
+.closing-meta a:hover { color: var(–gold); border-color: var(–gold-dim); }
+
+.spacer-md { height: 4rem; }
+
+/* ══════ RESPONSIVE ══════ */
+@media (max-width: 600px) {
+.spine { padding: 0 1.5rem; }
+.file-header { padding: 5rem 0 3rem; }
+.dossier-row { flex-direction: column; gap: 0.2rem; }
+.dossier-key { min-width: unset; }
+.associate { grid-template-columns: 1fr; }
+.assoc-glyph { display: none; }
+.term { grid-template-columns: 24px 1fr; }
+.timeline { padding-left: 1.5rem; }
+.section-nav { gap: 1.2rem; padding: 0.8rem 0; }
+.pull { margin-left: 0; }
+}
+
+.reveal {
+opacity: 1;
+transform: translateY(0);
+}
+</style>
+
+</head>
+<body>
+<div class="spine">
+
+  <!-- ══════ HEADER ══════ -->
+
+  <header class="file-header">
+    <div class="file-stamp">file no. 001 — supernatural oc — leftinperdition</div>
+    <h1 class="file-name"><em>Jovienne</em><br>Maren Calder</h1>
+    <p class="file-epigraph">She sold her soul at a crossroads and asked for less time, not more. The demon was unsettled.</p>
+    <div class="file-meta">
+      <strong>independent</strong> <span class="sep">/</span> selective <span class="sep">/</span> canon compliant & canon divergent<br>
+      crossover <span class="sep">/</span> au <span class="sep">/</span> oc friendly <span class="sep">/</span> rated r<br>
+      penned by <strong>bleu</strong> <span class="sep">—</span> she/her <span class="sep">—</span> 24 <span class="sep">—</span> est. 2026
+    </div>
+  </header>
+
+  <hr class="gold">
+
+  <nav class="section-nav">
+    <a href="#dossier">Dossier</a>
+    <a href="#universes">Universes</a>
+    <a href="#associates">Associates</a>
+    <a href="#terms">Terms</a>
+    <a href="#index">Index</a>
+  </nav>
+
+  <!-- ══════ DOSSIER ══════ -->
+
+  <section id="dossier" class="section reveal">
+    <div class="section-index">i.</div>
+    <h2 class="section-heading">the woman who <em>stayed.</em></h2>
+
+```
+<p class="dossier-text">
+  <strong>Jovienne Maren Calder.</strong> Born March 14, 1982, in Carrow, Illinois. Population 2,800. Church suppers, high school football, everybody knows your name. The kind of place where reputation is currency and Prosper Calder was the richest man in town. Middle child. Older brother Hadrien. Younger sister Solène. A house with a porch and a backyard. A father who coached Little League and organized the church pancake breakfast.
+</p>
+
+<p class="dossier-text">
+  The abuse began when she was seven. It continued until she was twelve. She told her mother. Her mother's face closed like a door. She told a counselor. The counselor called Prosper. She told a teacher. The teacher looked at Prosper Calder — church deacon, everyone's favorite father — and looked at Jovienne — small, angry, already labeled <em>troubled</em> — and the math was done. Nobody believed her. Not once. Not ever.
+</p>
+
+<p class="dossier-text">
+  She made a crossroads deal in April 2007. Traded her soul for one thing: her father's death. The demon offered ten years. She said <em>one.</em> Three days later, Prosper Calder died. Heart attack. The church was standing-room-only at the funeral. Jovienne wore black and felt nothing but the clean, bright absence of fear.
+</p>
+
+<p class="dossier-text">
+  She died in April 2008. She spent forty to fifty years in Hell. She held out longer than most — not because she was strong, but because the worst thing that had ever happened to her happened in a house with floral wallpaper, and Hell was at least <em>honest</em> about what it was. She broke. She picked up the blade. She became what they wanted, and what frightened her most was how easy it was.
+</p>
+
+<p class="dossier-text">
+  In October 2008, she woke in a field outside Pontiac, Illinois. Body intact. No memory of extraction. No scars from her previous life. She had one objective: <strong>find Dean Winchester.</strong>
+</p>
+
+<div class="pull">
+  "You don't get to give up. You told me I was real. Prove it."
+  <cite>5x18, "point of no return"</cite>
+</div>
+
+<div class="dossier-fields">
+  <div class="dossier-row"><span class="dossier-key">faceclaim</span><span class="dossier-val"><strong>Sophia Bush</strong></span></div>
+  <div class="dossier-row"><span class="dossier-key">species</span><span class="dossier-val">Human <em>( resurrected; formerly damned soul )</em></span></div>
+  <div class="dossier-row"><span class="dossier-key">born</span><span class="dossier-val">March 14, 1982 — Carrow, Illinois</span></div>
+  <div class="dossier-row"><span class="dossier-key">love interest</span><span class="dossier-val"><strong>Dean Winchester</strong> <em>( primary )</em></span></div>
+  <div class="dossier-row"><span class="dossier-key">deal terms</span><span class="dossier-val">One year. Not ten.</span></div>
+  <div class="dossier-row"><span class="dossier-key">hell duration</span><span class="dossier-val">~40–50 years <em>( topside: ~5 months )</em></span></div>
+  <div class="dossier-row"><span class="dossier-key">resurrection</span><span class="dossier-val"><strong>The Empty</strong> — her soul carries a frequency adjacent to oblivion</span></div>
+  <div class="dossier-row"><span class="dossier-key">status</span><span class="dossier-val"><strong>Alive.</strong> <em>Choosing, every day, to be something.</em></span></div>
+</div>
+
+<div class="compliance-note">
+  <strong>Canon compliance:</strong> Jovienne integrates into the existing <em>Supernatural</em> timeline without contradicting established events. She can be written <strong>canon compliant</strong> or <strong>canon divergent</strong> — both are always available. Threads are tagged by verse for your convenience; check descriptions below or ask.
+</div>
+```
+
+  </section>
+
+  <hr>
+  <div class="spacer-md"></div>
+
+  <!-- ══════ UNIVERSES ══════ -->
+
+  <section id="universes" class="section reveal">
+    <div class="section-index">ii.</div>
+    <h2 class="section-heading">every version of <em>her.</em></h2>
+
+```
+<!-- ─── TIMELINE ─── -->
+<div class="universe-group">
+  <div class="universe-group-label">timeline</div>
+
+  <div class="timeline">
+
+    <div class="tl-node">
+      <div class="tl-tag">#what crawled out — main verse</div>
+      <div class="tl-title">What Crawled Out</div>
+      <div class="tl-body">
+        jovienne has been topside for approximately six weeks. she has no money, no identification, and no explanation for how she's breathing. she's cycling through stolen IDs and moving east, tracking signs of the winchesters across three states. she finds them. she stays. she gets the anti-possession tattoo on the inside of her left wrist — the spot where a scar used to be on a body she no longer has. she's learning to hunt in real time, closing the gaps in her lore knowledge while operating on instincts forged over forty years in the pit. she doesn't flinch at violence but startles at unexpected touch. she doesn't know who pulled her from hell. neither does the angel who pulled dean. <strong>[ age: 26 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-tag">#borrowed time — the apocalypse</div>
+      <div class="tl-title">Borrowed Time</div>
+      <div class="tl-body">
+        the world is ending. michael and lucifer are circling each other for vessels and jovienne is not one — no bloodline, no cosmic significance, nothing that registers on heaven's chessboard. she operates beneath the angels' notice. she is hunting alongside sam and dean while the seals break and the horsemen ride. famine looked into her and flinched; she was already full. she kissed dean the night before carthage because she didn't think there'd be a morning. she let him go to lisa after sam fell. the distance cost her more than hell did. <strong>[ age: 27–28 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node absent">
+      <div class="tl-tag">#the distance — absent</div>
+      <div class="tl-title">The Distance</div>
+      <div class="tl-body">
+        hunting with hadrien and solène. deliberately away. dean's phone has "JC" in the contacts and he never calls. bobby mentions she handled a rugaru clean. she calls bobby for lore. she does not call dean. dean dials her number at the end of the year and gets voicemail: <em>"It's Calder. Leave it."</em> he hangs up without a message. <strong>[ age: 28–29 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node absent">
+      <div class="tl-tag">#the silence — absent</div>
+      <div class="tl-title">The Silence</div>
+      <div class="tl-body">
+        leviathans. bobby's contact whiteboard reads CALDER (H), CALDER (J), CALDER (S). bobby tells her to stay out of sioux falls. bobby dies. dean calls her and can't finish the sentence. a text arrives: <em>"I'm coming."</em> she doesn't arrive in time. at the end, sam's thumb hovers over her name. <strong>[ age: 29–30 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-tag">#what remains — the return</div>
+      <div class="tl-title">What Remains</div>
+      <div class="tl-body">
+        dean is back from purgatory. she picks up on the first ring — the phone hasn't left her hand in thirteen months. the reunion isn't gentle; she hits him first, then holds on. a year of hard hunting alone has stripped her down to structural elements. the relationship ignites. no more circling. no more almost. naomi takes an interest in jovienne that goes beyond standard surveillance — something about her extraction from hell left a signature that the angel recognizes and fears. the gates of hell are almost closed. the angels fall. <strong>[ age: 30–31 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-tag">#the mark knows — cain's legacy</div>
+      <div class="tl-title">The Mark Knows</div>
+      <div class="tl-body">
+        fallen angels. civil wars in heaven. the calders are fully integrated into the hunting network and jovienne's understanding of demon hierarchy and behavior fills tactical gaps the winchesters don't have. dean takes on the mark of cain and jovienne is the first to recognize what it's doing to him — the way his hand lingers on the blade, the way his focus sharpens when he draws blood. she's seen that look before. she wore it for thirty years. <strong>[ age: 31–32 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-tag">#the thing she became — demonhood</div>
+      <div class="tl-title">The Thing She Became</div>
+      <div class="tl-body">
+        the man she loves has become the thing that made her. dean is a demon. jovienne is the only member of the team who has been a torturer, who knows the transition from human to monster from the inside. she sits across from him — black eyes, lazy grin, wearing his face without his warmth — and she talks. not to the demon. to him. the way he used to talk to her in hell when the blade was down and the silence was big enough to hear each other breathe. <em>"I know you're in there. I was in there once, too. Come back."</em> it doesn't work immediately. but it's the crack. <strong>[ age: 32–33 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-tag">#something old — the darkness</div>
+      <div class="tl-title">Something Old</div>
+      <div class="tl-body">
+        amara walks the earth and dean is pulled toward her in ways he can't explain or resist. for the first time, jealousy enters jovienne's dynamic with him — not romantic. <em>existential.</em> amara is cosmic, eternal, fundamentally important in a way jovienne has been told she is not. the resurrection mystery advances: amara looks at jovienne and says, <em>"You carry something old."</em> jovienne says, <em>"I know."</em> first time she's admitted it aloud. whatever the empty left inside her, it predates the angels. <strong>[ age: 33–34 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-tag">#what mothers do — the return of mary</div>
+      <div class="tl-title">What Mothers Do</div>
+      <div class="tl-body">
+        mary winchester is alive again. jovienne watches a woman try to be a mother to sons she doesn't recognize, and she understands something mary doesn't: sometimes the failure isn't dying. sometimes it's staying and choosing not to see. elowen calder resurfaces — one conversation, eight minutes, mostly silence. she wants forgiveness. jovienne gives her nothing. the british men of letters are recruiting hunters with promises of a better system. jovienne doesn't trust systems. systems are what let prosper calder coach little league for twenty years. <strong>[ age: 34–35 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-tag">#the kid first — jack</div>
+      <div class="tl-title">The Kid First</div>
+      <div class="tl-body">
+        jack kline is born — the son of lucifer, a nephilim with power beyond measurement, and a kid who doesn't know how to use a microwave. jovienne becomes one of his fiercest advocates. every protective instinct she possesses activates. <em>"He's a kid. He's a kid first."</em> she said it years ago about jesse turner and she means it now. her relationship with castiel thaws here, united by shared devotion to a child who might be the most powerful being in creation and doesn't know how to tie his shoes. the apocalypse world opens. people start falling through. <strong>[ age: 35–36 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-tag">#the face he wore — michael</div>
+      <div class="tl-title">The Face He Wore</div>
+      <div class="tl-body">
+        michael is wearing dean's body. it's a different devastation than demon dean — quieter, more insidious, more <em>personal.</em> she can't fight an archangel. her entire skillset — the violence, the precision, the willingness to sacrifice — is useless against something ancient wearing the face she's memorized. she and sam become closer, bound by the shared experience of loving dean winchester and being unable to save him. sam sees the full depth of what she feels for the first time. not because she tells him. because she stops being able to hide it. <strong>[ age: 36–37 ]</strong>
+      </div>
+    </div>
+
+    <div class="tl-node">
+      <div class="tl-tag">#frequency — endgame</div>
+      <div class="tl-title">Frequency</div>
+      <div class="tl-body">
+        god is the antagonist. the story was always his. the answer to who pulled jovienne from hell arrives: <strong>the empty.</strong> her soul vibrates at a frequency adjacent to oblivion — the primordial void recognized something in her that was similar to itself. not identical. adjacent. like a note harmonizing with a chord. it's not a power. it's not a weapon. it's an explanation: for the emptiness famine saw, for amara's recognition, for the way hell couldn't fully claim her. she is a woman who was always, on some fundamental level, <em>already gone.</em> this is the chapter where she and dean finally have time. quiet time. stolen mornings. arguments about nothing. she survives. she lives. she <em>continues.</em> <strong>[ age: 37–38 ]</strong>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── ALTERNATE ─── -->
+<div class="universe-group">
+  <div class="universe-group-label">alternate</div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#what maren cole knew — sandover au</div>
+    <div class="verse-block-title">Maren Cole</div>
+    <div class="verse-block-body">
+      senior coordinator, employee relations. master's from northwestern. green tea in a ceramic mug that says <em>BREATHE.</em> glass-walled office, fourteenth floor, door always open. maren cole is believed — universally, automatically, without question. employees come to her with complaints and the system <em>responds.</em> she files a report and things <em>change.</em> she doesn't know this is extraordinary. she doesn't know this is the cruelest thing an angel could have built for her: the life she should have had if anyone had listened. she counts exits she doesn't know she's counting. she rubs a bare wrist where a scar should be. she looks at dean smith in an elevator and her chest <em>pulls.</em> <strong>[ age: 26 ]</strong>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#the deal year — pre-series</div>
+    <div class="verse-block-title">The Deal Year</div>
+    <div class="verse-block-body">
+      april 2007 to april 2008. the happiest year of her life and she knows exactly how fucked up that is. she mended things with hadrien and solène — careful, slow, the way you reassemble something shattered. she ate dinners without checking the exits. she slept past 4 AM. prosper is dead. the fear is gone. she is counting down to her own death and she is <em>peaceful.</em> her siblings know about the deal's expiration. all three maintain the fiction by unspoken agreement, because the alternative is grieving a woman who's still standing in front of them. <strong>[ age: 25 ]</strong>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#the rack — hell verse</div>
+    <div class="verse-block-title">The Rack</div>
+    <div class="verse-block-body">
+      forty to fifty years below. she held out longer than most — not strength, familiarity. the worst thing that ever happened to her happened in a house with floral wallpaper. hell didn't pretend to love her first. she broke. she took the blade. the precision of it felt like control — reducing a soul to its component screams gave her something she'd been chasing her entire life: power over what happened next. dean winchester arrived approximately ten years after her. another human soul, freshly racked, carrying that same look. they became something without a clean name. there was tenderness, too — or something adjacent to it. in the spaces between. eye contact held too long. a hand steadied against a shoulder. <strong>[ age: n/a — time functions differently ]</strong>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#calder v. calder — normal life</div>
+    <div class="verse-block-title">Calder v. Calder</div>
+    <div class="verse-block-body">
+      no supernatural. no deal. no hell. jovienne grew up in carrow, survived her father, survived herself, moved away at eighteen, and built a life in fragments. she works as a victim advocate at a county prosecutor's office — the job she would have found eventually, the work her bones were built for: standing between the person telling the truth and the system deciding whether to believe them. she is good at it in a way that frightens her. she hasn't spoken to her mother in years. hadrien is a firefighter. solène is in law school. prosper calder is alive, unpunished, still coaching little league. jovienne carries a restraining order and a level of contained fury that could power a city block. <strong>[ age: 20s–30s ]</strong>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#the frequency speaks — post-series</div>
+    <div class="verse-block-title">The Frequency Speaks</div>
+    <div class="verse-block-body">
+      after. the dust settles and the winchesters are, for the first time, free. jovienne should be free too. she isn't sure what that means. the empty's resonance hasn't faded — it's gotten <em>louder.</em> she hears it in silence, in the spaces between sounds, in the dark behind her eyelids. it isn't malicious. it's lonely. the void that pulled her out didn't forget about her after all; it just took a very long time to speak again. jovienne is navigating a post-hunting life while managing a connection to a primordial entity that experiences the concept of "company" for the first time. she's still with dean. she's still choosing to stay. the choice is harder now that staying is quiet. <strong>[ age: late 30s–40s ]</strong>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#her father's daughter — dark mirror</div>
+    <div class="verse-block-title">Her Father's Daughter</div>
+    <div class="verse-block-body">
+      the version where she didn't come back right. whatever pulled her from hell rebuilt her body but didn't fully separate her from what she became on the rack. she's topside, she's functional, she looks like jovienne — but the blade never left her hand. not literally, but the impulse, the skill, the <em>ease</em> of it. she's not a demon. she's something worse: a human who can do what demons do and who has to choose, every minute, not to. she hunts, but the hunts get bloodier. she's precise when she should be merciful. she reads pain like sheet music. dean sees it. he recognizes it because it's the thing he was most afraid of in himself, walking around in the woman he — <strong>[ age: 26+ ]</strong>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── CROSSOVER ─── -->
+<div class="universe-group">
+  <div class="universe-group-label">crossover</div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#no such thing as clean hands — the boys</div>
+    <div class="verse-block-title">No Such Thing as Clean Hands</div>
+    <div class="verse-block-body">
+      in a world where gods walk the earth wearing capes, jovienne calder grew up knowing the system was designed to protect the powerful — because she learned that at seven, in a house in carrow, from a man nobody would touch. she works as an independent contractor specializing in information extraction — a polite term for the thing she's best at. she doesn't work for vought and she doesn't work for the boys, but both have tried to recruit her, because a woman who can read a person's pressure points in thirty seconds and who shows no physiological stress response during interrogation is valuable to everyone and safe with no one. she carries no weapons. she doesn't need them. <strong>[ age: 20s–30s ]</strong>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#the house always wins — criminal minds</div>
+    <div class="verse-block-title">The House Always Wins</div>
+    <div class="verse-block-body">
+      no supernatural elements. jovienne calder is a person of interest in an FBI behavioral analysis unit investigation — not as a suspect, but as a survivor whose history keeps intersecting with bodies. her father died of a heart attack that the ME flagged as unusual. three men in carrow with records of violence against minors have died in the years since. jovienne has an alibi for each one. the alibis are airtight. the BAU profile describes someone methodical, patient, mission-oriented, with an intimate understanding of how investigations work and where they fail. agent reid notices she answers questions before they're fully asked. agent prentiss notices she never sits with her back to the door. <strong>[ age: 20s–30s ]</strong>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#the patron saint of sharp things — the witcher</div>
+    <div class="verse-block-title">The Patron Saint of Sharp Things</div>
+    <div class="verse-block-body">
+      a healer in a medieval world that doesn't trust healers. jovienne travels between villages offering her services — bone-setting, wound-stitching, the kind of practical medicine that requires steady hands and a stomach for blood. she's good at it. too good, some say. she knows where to cut before she's told what's wrong. she reads bodies the way scholars read texts: structurally, precisely, with an understanding of where things break. the rumors follow her from town to town. <em>witch,</em> they whisper, but she's not — she's just a woman who spent a long time learning how things come apart, and decided to learn how they go back together instead. <strong>[ age: 20s–30s ]</strong>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#the longest night — the last of us</div>
+    <div class="verse-block-title">The Longest Night</div>
+    <div class="verse-block-body">
+      twenty years after outbreak day. jovienne survived the initial collapse of carrow, illinois, by doing what she's always done: reading the room, counting the exits, moving before the danger reached her. she lost hadrien in year three — not to the infected, to a FEDRA patrol — and has been looking for solène ever since. she operates outside the quarantine zones as a smuggler and occasional escort for people crossing hostile territory. she doesn't carry a gun. she carries a blade, and the precision with which she uses it makes people stop asking questions about where she learned. she's survived this long because the world after cordyceps isn't so different from the world before it: the powerful take, the systems fail, and the people who were never believed are the ones who saw it coming. <strong>[ age: 40s ]</strong>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-block-tag">#crossroads — open</div>
+    <div class="verse-block-title">Crossroads</div>
+    <div class="verse-block-body">
+      the open verse. jovienne's core translates across any setting — the survivor's precision, the bone-dry humor, the hands that know violence and are learning tenderness. modern, historical, fantasy, sci-fi, horror. come with a concept and we'll build from there.
+    </div>
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <hr>
+  <div class="spacer-md"></div>
+
+  <!-- ══════ ASSOCIATES ══════ -->
+
+  <section id="associates" class="section reveal">
+    <div class="section-index">iii.</div>
+    <h2 class="section-heading">known <em>associates.</em></h2>
+
+```
+<div class="associate">
+  <div class="assoc-glyph">D</div>
+  <div>
+    <div class="assoc-name">Dean Winchester</div>
+    <div class="assoc-tag">the axis · primary love interest</div>
+    <div class="assoc-desc">the only person who doesn't require an explanation. she knows what he sounds like when he breaks. he knows what her hands look like when they're working. he says her full name — <em>Jovienne</em>, never shortened — like he's reminding himself she's real. in a fake life with every memory stripped, he found her in an elevator and knew her anyway.</div>
+  </div>
+</div>
+
+<div class="associate">
+  <div class="assoc-glyph">S</div>
+  <div>
+    <div class="assoc-name">Sam Winchester</div>
+    <div class="assoc-tag">the cautious parallel</div>
+    <div class="assoc-desc">she recognizes the shape of self-destruction. the trust builds slow — through research, loss, and the specific solidarity of loving someone who can't be saved from himself.</div>
+  </div>
+</div>
+
+<div class="associate">
+  <div class="assoc-glyph">C</div>
+  <div>
+    <div class="assoc-name">Castiel</div>
+    <div class="assoc-tag">the door that closed</div>
+    <div class="assoc-desc">he raised dean. he left her. the resentment thaws eventually — united by jack, by the slow recognition that an angel who chose humanity might deserve the same grace she's still learning to extend to herself.</div>
+  </div>
+</div>
+
+<div class="associate">
+  <div class="assoc-glyph">H</div>
+  <div>
+    <div class="assoc-name">Hadrien Elias Calder</div>
+    <div class="assoc-tag">older brother · fc: milo ventimiglia</div>
+    <div class="assoc-desc">built for one purpose: standing between his sisters and whatever comes next. he believed her instantly. became a hunter to bring her back. stayed because the world is full of things that hurt people.</div>
+  </div>
+</div>
+
+<div class="associate">
+  <div class="assoc-glyph">S</div>
+  <div>
+    <div class="assoc-name">Solène Lark Calder</div>
+    <div class="assoc-tag">younger sister · fc: willa holland</div>
+    <div class="assoc-desc">the person she died for. the reason the deal exists. jovienne is softer with solène than with anyone. their love is enormous and slightly asymmetrical, and neither realizes the other doesn't think in terms of debt.</div>
+  </div>
+</div>
+
+<div class="associate">
+  <div class="assoc-glyph">B</div>
+  <div>
+    <div class="assoc-name">Bobby Singer</div>
+    <div class="assoc-tag">the careful hand</div>
+    <div class="assoc-desc">she circles him the way a feral animal circles a hand offering food. bobby senses this and gives her space without making a thing of it. <em>"Then don't watch. Help."</em></div>
+  </div>
+</div>
+
+<div class="associate">
+  <div class="assoc-glyph">J</div>
+  <div>
+    <div class="assoc-name">Jack Kline</div>
+    <div class="assoc-tag">he's a kid first</div>
+    <div class="assoc-desc">every protective instinct she possesses, activated. a child with power beyond comprehension who is also just a kid who wants to be loved. <em>"He's a kid first."</em> it's her thesis statement. it hasn't changed.</div>
+  </div>
+</div>
+
+<div class="associate">
+  <div class="assoc-glyph">P</div>
+  <div>
+    <div class="assoc-name">Prosper Calder</div>
+    <div class="assoc-tag">the dead man · fc: mark pellegrino / bruce greenwood</div>
+    <div class="assoc-desc">her father. her abuser. dead by her design. she doesn't regret it. given the chance, she'd do it again. that certainty lives inside her like a second heartbeat.</div>
+  </div>
+</div>
+
+<div class="associate">
+  <div class="assoc-glyph">E</div>
+  <div>
+    <div class="assoc-name">Elowen Calder née Graves</div>
+    <div class="assoc-tag">the door-shaped hole · fc: sela ward</div>
+    <div class="assoc-desc">her mother. the woman who heard <em>daddy hurts me</em> and chose the version of reality where that wasn't true. a door-shaped hole where a mother should have been.</div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <hr>
+  <div class="spacer-md"></div>
+
+  <!-- ══════ TERMS ══════ -->
+
+  <section id="terms" class="section reveal">
+    <div class="section-index">iv.</div>
+    <h2 class="section-heading">terms of <em>engagement.</em></h2>
+
+```
+<div class="term"><div class="term-num">01</div><div><div class="term-label">the writer</div><div class="term-text"><strong>Bleu.</strong> 24. She/her. This blog writes dark themes — childhood abuse, trauma, suicide, Hell, torture, violence, blasphemy, explicit content — with care and intentionality, not for spectacle.</div></div></div>
+
+<div class="term"><div class="term-num">02</div><div><div class="term-label">follows & interactions</div><div class="term-text">Independent and selective. I follow blogs with developed muse pages and characters I can see Jovienne interacting with. I don't follow where I can't find thread potential. That's not a value judgment.</div></div></div>
+
+<div class="term"><div class="term-num">03</div><div><div class="term-label">canon & divergence</div><div class="term-text"><strong>Canon compliant</strong> — she fits into the timeline without contradicting events. <strong>Canon divergent</strong> — exploring what shifts when her existence changes the room. Both always available.</div></div></div>
+
+<div class="term"><div class="term-num">04</div><div><div class="term-label">shipping</div><div class="term-text">Primary love interest is <strong>Dean Winchester</strong>, but I'm chemistry-first. Jovienne's intimacy is shaped by her history — she doesn't perform desire for comfort and doesn't fall fast. Fade-to-black or explicit by agreement. No ships with minors. No romanticized abuse. No incest.</div></div></div>
+
+<div class="term"><div class="term-num">05</div><div><div class="term-label">writing style</div><div class="term-text">Para and multi-para. Atmospheric prose, close third-person, visceral detail, psychological layering. I match partners in length and effort. Crossover, AU, and OC friendly.</div></div></div>
+
+<div class="term"><div class="term-num">06</div><div><div class="term-label">hard limits</div><div class="term-text">Wincest. Underage content. Romanticized or graphic CSA. Callout posts, vagueblogging, dash drama. Godmodding. Jovienne's abuse is never written in graphic terms — the <em>impact</em> is the story. Non-negotiable.</div></div></div>
+
+<div class="term"><div class="term-num">07</div><div><div class="term-label">this character</div><div class="term-text">Jovienne is <strong>an original character.</strong> She is mine. She is not a self-insert, not a love interest accessory, not a rehabilitation project. She is a person, and I write her like one.</div></div></div>
+
+<div class="term"><div class="term-num">08</div><div><div class="term-label">triggers</div><div class="term-text">I tag extensively. Communicate yours and I will respect them without question, without explanation, without judgment. Your comfort matters more than any thread.</div></div></div>
+```
+
+  </section>
+
+  <hr>
+  <div class="spacer-md"></div>
+
+  <!-- ══════ INDEX ══════ -->
+
+  <section id="index" class="section reveal">
+    <div class="section-index">v.</div>
+    <h2 class="section-heading">tag <em>index.</em></h2>
+
+```
+<div class="index-group">
+  <div class="index-label">out of character</div>
+  <div class="index-list">
+    <div class="index-item">ooc: from the margins [ bleu speaks ]</div>
+    <div class="index-item">dash games.</div>
+    <div class="index-item">promo.</div>
+    <div class="index-item">musings.</div>
+    <div class="index-item">wishlist: wanted connections</div>
+  </div>
+</div>
+
+<div class="index-group">
+  <div class="index-label">in character</div>
+  <div class="index-list">
+    <div class="index-item">inbox: crossroads mail [ delivered ]</div>
+    <div class="index-item">open starter.</div>
+    <div class="index-item">closed starter.</div>
+    <div class="index-item accent">the woman who stayed [ jovienne ]</div>
+  </div>
+</div>
+
+<div class="index-group">
+  <div class="index-label">characterization</div>
+  <div class="index-list">
+    <div class="index-item">case file: frequency [ headcanons ]</div>
+    <div class="index-item">case file: the rack and after [ hell ]</div>
+    <div class="index-item">case file: muscle memory [ physicality ]</div>
+    <div class="index-item">case file: the deal year [ pre-series ]</div>
+    <div class="index-item">case file: carrow, illinois [ the calders ]</div>
+    <div class="index-item">case file: what maren cole knew [ sandover ]</div>
+    <div class="index-item">case file: inverted tells [ voice & behavior ]</div>
+  </div>
+</div>
+
+<div class="index-group">
+  <div class="index-label">visuals & media</div>
+  <div class="index-list">
+    <div class="index-item">mugshot: portrait [ jovienne calder ]</div>
+    <div class="index-item">mugshot: aesthetic [ the void hums ]</div>
+    <div class="index-item">mugshot: playlist [ sulfur & pennies ]</div>
+    <div class="index-item">mugshot: this is her [ character resonance ]</div>
+  </div>
+</div>
+
+<div class="index-group">
+  <div class="index-label">relationships</div>
+  <div class="index-list">
+    <div class="index-item accent">axis: you were real [ dean winchester ]</div>
+    <div class="index-item">relation: the cautious parallel [ sam winchester ]</div>
+    <div class="index-item">relation: the door that closed [ castiel ]</div>
+    <div class="index-item">relation: what he'd kill for [ hadrien calder ]</div>
+    <div class="index-item">relation: the reason the deal exists [ solène calder ]</div>
+    <div class="index-item">relation: the careful hand [ bobby singer ]</div>
+    <div class="index-item">relation: he's a kid first [ jack kline ]</div>
+    <div class="index-item">relation: the door-shaped hole [ elowen calder ]</div>
+    <div class="index-item">relation: the dead man [ prosper calder ]</div>
+  </div>
+</div>
+
+<div class="index-group">
+  <div class="index-label">verses — timeline</div>
+  <div class="index-list">
+    <div class="index-item">what crawled out [ main ]</div>
+    <div class="index-item">borrowed time [ apocalypse ]</div>
+    <div class="index-item">the distance [ absent ]</div>
+    <div class="index-item">the silence [ absent ]</div>
+    <div class="index-item">what remains [ return ]</div>
+    <div class="index-item">the mark knows [ cain's legacy ]</div>
+    <div class="index-item">the thing she became [ demonhood ]</div>
+    <div class="index-item">something old [ the darkness ]</div>
+    <div class="index-item">what mothers do [ mary ]</div>
+    <div class="index-item">the kid first [ jack ]</div>
+    <div class="index-item">the face he wore [ michael ]</div>
+    <div class="index-item">frequency [ endgame ]</div>
+  </div>
+</div>
+
+<div class="index-group">
+  <div class="index-label">verses — alternate</div>
+  <div class="index-list">
+    <div class="index-item">what maren cole knew [ sandover ]</div>
+    <div class="index-item">the deal year [ pre-series ]</div>
+    <div class="index-item">the rack [ hell ]</div>
+    <div class="index-item">calder v. calder [ normal life ]</div>
+    <div class="index-item">the frequency speaks [ post-series ]</div>
+    <div class="index-item">her father's daughter [ dark mirror ]</div>
+  </div>
+</div>
+
+<div class="index-group">
+  <div class="index-label">verses — crossover</div>
+  <div class="index-list">
+    <div class="index-item">no such thing as clean hands [ the boys ]</div>
+    <div class="index-item">the house always wins [ criminal minds ]</div>
+    <div class="index-item">the patron saint of sharp things [ the witcher ]</div>
+    <div class="index-item">the longest night [ the last of us ]</div>
+    <div class="index-item">crossroads [ open ]</div>
+  </div>
+</div>
+
+<div class="index-group">
+  <div class="index-label">content warnings</div>
+  <div class="index-list">
+    <div class="index-item">tw: abuse mention</div>
+    <div class="index-item">tw: suicide / self-harm</div>
+    <div class="index-item">tw: hell / torture</div>
+    <div class="index-item">tw: violence</div>
+    <div class="index-item">tw: explicit content</div>
+    <div class="index-item">tw: death</div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <hr class="gold">
+
+  <div class="closing">
+    <div class="closing-line">She is not in the books.</div>
+    <div class="closing-line">She is not in the prophecy.</div>
+    <div class="closing-line">She was there the <em>whole time.</em></div>
+    <div class="closing-meta">
+      <br>leftinperdition — est. 2026<br>
+      jovienne maren calder · supernatural oc<br>
+      canon compliant & divergent · written by bleu<br><br>
+      <a href="#">return to blog</a> &nbsp;/&nbsp; <a href="#">message</a> &nbsp;/&nbsp; <a href="#">blogroll</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// Fallback: make everything visible after 2s in case observer doesn't fire
+setTimeout(() => {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+}, 2000);
+</script>
+
+</body>
+</html>
